@@ -29,7 +29,13 @@ const Signup = () => {
       await axios.post('http://localhost:5000/auth/signup',data)
       .then((res)=>{
         if(res.status == 201){
-          dispatch(signup(data))
+          console.log(res.data)
+          dispatch(signup(
+            {
+              username:res.data.userDetails.username,
+              userId:res.data.userDetails.id,
+            }
+          ))
           console.log("data submitted successfully",data)
           navigate('/')
         }

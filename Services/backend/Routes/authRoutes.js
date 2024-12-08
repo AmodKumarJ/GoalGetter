@@ -21,7 +21,8 @@ router.post('/signup',async (req,res) => {
         const password = await bcrypt.hash(pass, salt);
         const new_user = await authServices.createUser({username,password,email}) 
         if (new_user) {
-            return res.status(201).json({message: 'User created successfully'})
+            
+            return res.status(201).json({message: 'User created successfully',userDetails:{id:new_user._id,username:new_user.username}})
         }
         else{
             return req.status(400).json({message:'User creation failed'})
@@ -49,8 +50,8 @@ router.post('/signin',async (req,res) => {
         }
         const token = jwt.sign({username:user.username},secret_key,{expiresIn:'1h'})
         req.session.user = {username:user.username}
-
-        res.status(200).json({message:'sign in successfully ',token:token})
+        const userdetails = await authServices.findUserById(username)
+        res.status(200).json({message:'sign in successfully ',token:token,userdetails:{id:userdetails._id,username:userdetails.username}})
     } catch (error) {
         console.log('error : ',error)
         res.status(500).json({message:'server error'})
