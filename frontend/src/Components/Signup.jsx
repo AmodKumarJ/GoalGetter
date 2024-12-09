@@ -26,7 +26,7 @@ const Signup = () => {
     
     console.log(data);
     try {
-      await axios.post('http://localhost:5000/auth/signup',data)
+      await axios.post('http://localhost:4000/users/register',data)
       .then((res)=>{
         if(res.status == 201){
           console.log(res.data)

@@ -9,17 +9,10 @@ const app = express()
 
 //calling the database connection
 dbConnection()
-secret_key = process.env.SECRET_KEY
+secret_key = process.env.SECRET_KEY 
 app.use(express.json())
 
-app.use(
-    session({
-        secret: secret_key,
-        resave:false,
-        saveUninitialized:false,
-        cookie:{secure:false,maxAge:3600000}
-    })
-)
+
 app.use(cors())
 app.use('/auth',authRoutes)
 const port = process.env.PORT || 5000

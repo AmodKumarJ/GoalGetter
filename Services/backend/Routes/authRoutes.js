@@ -48,23 +48,15 @@ router.post('/signin',async (req,res) => {
         if (!isMatch) {
             return res.status(401).json({message:'Invalid Credential'})
         }
-        const token = jwt.sign({username:user.username},secret_key,{expiresIn:'1h'})
-        req.session.user = {username:user.username}
+       
         const userdetails = await authServices.findUserById(username)
-        res.status(200).json({message:'sign in successfully ',token:token,userdetails:{id:userdetails._id,username:userdetails.username}})
+        res.status(200).json({message:'sign in successfully ',userdetails:{id:userdetails._id,username:userdetails.username}})
     } catch (error) {
         console.log('error : ',error)
         res.status(500).json({message:'server error'})
     }
 })
 
-router.post('/logout',(req,res) => {
-    req.session.destroy((err)=>{
-        if (err) {
-            return res.status(500).json({message:'Logout Failed'})
-        }
-        res.status(200).json({message:'Logout Successfull'})
-    })
-})
+
 
 module.exports = router;

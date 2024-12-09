@@ -1,14 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
 import { GrProjects } from "react-icons/gr";
 import { FaTasks } from "react-icons/fa";
 import { BsCalendar3 } from "react-icons/bs";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { FaPowerOff } from "react-icons/fa";
+import { logout } from "../Redux/authSlice";
+import { useDispatch } from "react-redux";
+import axios from 'axios'
 const Sidebar = ({ Sidebar }) => {
+  const dispatch = useDispatch()
+ const handelLogout = useCallback(async () => {
+  try {
+    await axios.post("http://localhost:4000/users/logout")
+    dispatch(logout())
+    localStorage.removeItem("token")
 
- const handelLogout =()=>{
-  
- }
+    console.log('logout successful')
+    
+  } catch (error) {
+    console.log(error)
+  }
+ },[])
 
   return (
     <menu
@@ -46,7 +58,7 @@ const Sidebar = ({ Sidebar }) => {
 
       </div>
       
-      <div className="mb-20 text-xl font-bold text-[#2f2f2f] flex gap-2 p-2 justify-start items-center hover:bg-[#19181a] w-full rounded-md hover:text-[#f2f2f2] active:bg-[#19181a] active:text-[#f2f2f2] cursor-pointer flex-col">
+      <div className="mb-20 text-xl font-bold text-[#2f2f2f] flex gap-2 p-2 justify-start items-center  w-full rounded-md hover:text-[#f2f2f2] cursor-pointer flex-col">
        <span className="bg-[#2f2f2f] h-[1px] w-full"></span>
         <div className="flex p-2 justify-center items-center gap-4" onClick={handelLogout}><span><FaPowerOff/></span>Logout</div>
       </div>

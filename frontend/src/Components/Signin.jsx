@@ -29,14 +29,14 @@ const Signin = () => {
     setIsSubmitting(true); // Indicate form submission in progress
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/signin",
+        "http://localhost:4000/users/login",
         data
       );
       if (response.status === 200) {
         console.log("Login sucess full",response.data)
         dispatch(signin({
-          username: response.data.userdetails.username,
-          userId: response.data.userdetails.id,
+          username: response.data.userdata.userdetails.username,
+          userId: response.data.userdata.userdetails.id,
           token: response.data.token,
         })); // Store user data in Redux
         navigate("/"); // Redirect user on successful login
