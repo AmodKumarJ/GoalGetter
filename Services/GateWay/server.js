@@ -6,7 +6,10 @@ const cors = require('cors')
 const app = express()
 const userRoutes =require('./Routes/UserRoutes')
 
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,
+}))
 
 secret_key = process.env.JWT_SECRET || 12498050 
 app.use(

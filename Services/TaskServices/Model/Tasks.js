@@ -6,6 +6,7 @@ const TaskSchema = mongoose.Schema({
   userId: { type: String, required: true, unique: true },
   task_name: { type: String, required: true, unique: true },
   task_priority: { type: String, required: true, unique: true },
+  task_status:{type:String,required:true,default:"pending"},
   created_at: {
     type: Date,
     default: Date.now,
@@ -23,4 +24,4 @@ TaskSchema.plugin(AutoIncrement, {inc_field: 'task_id'});
 
 const TaskModel = mongoose.model("taskModel",TaskSchema)
 
-module.exports = TaskModel
+module.exports = TaskModel  
