@@ -42,7 +42,7 @@ router.get("/tasks/:uid", async (req, res) => {
     res.status(500).json({ message: "Server error" });
     throw error;
   }
-});
+}); 
 router.delete("/task/:id", async (req, res) => {
   const { id } = req.params;
   try {
