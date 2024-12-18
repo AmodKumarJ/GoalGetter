@@ -2,12 +2,16 @@ const express = require('express')
 const cros = require('cors')
 const connection = require('./Config/Database')
 require('dotenv').config()
+const TaskRoutes = require('./TaskRoutes/TaskRoutes') 
 
 connection()
 
 const app = express()
 
 app.use(cros())
+
+app.use("/api",TaskRoutes)
+
 
 const port = process.env.PORT
 app.listen(port,()=>{

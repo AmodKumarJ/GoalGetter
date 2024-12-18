@@ -39,11 +39,7 @@ exports.deleteTaskById=async(task_id)=>{
 }
 exports.updateTaskStatus = async (task_id, status) => {
     try {
-        const updatedTask = await Tasks.findOneAndUpdate(
-            { task_id: task_id }, 
-            { task_status: status }, 
-            { new: true } 
-        );
+        const updatedTask = await Tasks.updateOne({ task_id: task_id }, { $set: { status: status } });;
 
         if (!updatedTask) {
             console.log("No task found with the given task_id");
