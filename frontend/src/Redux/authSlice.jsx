@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-    isAuthenticated:false,
-    username:null,
-    userId:null,
-    token:null
-}
+const persistedAuthState = {
+    isAuthenticated: JSON.parse(localStorage.getItem('isAuthenticated')) || false,
+    username: localStorage.getItem('username') || null,
+    userId: localStorage.getItem('userId') || null,
+    token: localStorage.getItem('token') || null,
+  };
+
+const initialState = persistedAuthState
 
 const authSlice = createSlice({
     name:'auth',

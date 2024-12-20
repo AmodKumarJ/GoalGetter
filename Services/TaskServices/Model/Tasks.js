@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const TaskSchema = mongoose.Schema({
-  task_id: { type: String, required: true, unique: true ,primaryKey: true},
+  task_id: { type: Number, required: true, unique: true ,primaryKey: true},
   userId: { type: String, required: true, unique: true },
   task_name: { type: String, required: true, unique: true },
   task_priority: { type: String, required: true, unique: true },

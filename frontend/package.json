@@ -10,14 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.5",
-    "@emotion/styled": "^11.13.5",
-    "@mui/material": "^6.1.9",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@gsap/react": "^2.1.1",
+    "@mui/icons-material": "^6.2.1",
+    "@mui/lab": "^6.0.0-beta.20",
+    "@mui/material": "^6.2.1",
+    "@mui/styled-engine-sc": "^6.2.1",
     "@mui/x-charts": "^7.23.0",
+    "@mui/x-data-grid": "^7.23.3",
     "@mui/x-date-pickers": "^7.23.0",
     "@reduxjs/toolkit": "^2.3.0",
     "axios": "^1.7.8",
     "dayjs": "^1.11.13",
+    "gsap": "^3.12.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.2",
@@ -26,6 +32,7 @@
     "react-router": "^7.0.1",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.13",
     "swiper": "^11.1.15"
   },
   "devDependencies": {

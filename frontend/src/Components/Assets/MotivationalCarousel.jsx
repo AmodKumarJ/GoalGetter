@@ -29,8 +29,8 @@ const MotivationalCarousel = () => {
       spaceBetween={30} // Space between slides
       slidesPerView={1} // Show one slide at a time
       //navigation // Enable arrows
-      //pagination={{ clickable: true }} // Enable dots
-      autoplay={{ delay: 3000 }} // Enable auto-scroll
+      pagination={{ clickable: true }} // Enable dots
+      autoplay={{ delay: 5000 }} // Enable auto-scroll
       style={{ width: "100%", margin: "0 auto" ,height:"100%" }} // Center slider
     >
       {slides.map((slide, index) => (
@@ -38,7 +38,7 @@ const MotivationalCarousel = () => {
           key={index}
           style={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-between",
             alignItems: "center",
             height: "100%", // Adjust height
             borderRadius: "10px",
@@ -49,13 +49,7 @@ const MotivationalCarousel = () => {
           }}
         >
           <h2
-            style={{
-              textAlign: "center",
-              color: "white",
-              backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
-              padding: "10px 20px",
-              borderRadius: "5px",
-            }}
+           className="text-[#ffff] text-2xl ml-10"
           >
             {slide.slogan}
           </h2>
