@@ -12,6 +12,7 @@ const Home = () => {
     <div className="w-full h-fit flex flex-col gap-2 relative">
       <div className="w-full h-[200px] ">
         <MotivationalCarousel />
+        <p>kdfjeojgolejgp</p>
       </div>
       <div>
         <TaskList/>
