@@ -7,7 +7,7 @@ const TaskRoutes = require('./TaskRoutes/TaskRoutes')
 connection()
 
 const app = express()
-
+app.use(express.json());
 app.use(cros())
 
 app.use("/api",TaskRoutes)

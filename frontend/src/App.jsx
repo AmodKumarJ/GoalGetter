@@ -6,6 +6,10 @@ import { createBrowserRouter,createRoutesFromElements,Route,RouterProvider } fro
 import Home from './Components/Home'
 import ProtectedRoute from './Components/protectedRoute'
 import RootLayout from './Components/RootLayout'
+import Completed from './Components/Completed'
+import Personal from './Components/Personal'
+import Work from './Components/Work'
+import Analytics from './Components/Analytics'
 
 
 const App = () => {
@@ -16,9 +20,31 @@ const App = () => {
           <ProtectedRoute>
               <Home />
           </ProtectedRoute>
+          
+        } />
+        <Route path='personal' element={
+          <ProtectedRoute>
+             <Personal />
+          </ProtectedRoute>
+        } />
+        <Route path='work' element={
+          <ProtectedRoute>
+             <Work />
+          </ProtectedRoute>
+        } />
+        <Route path='analytics' element={
+          <ProtectedRoute>
+             <Analytics />
+          </ProtectedRoute>
+        } />
+        <Route path='completed' element={
+          <ProtectedRoute>
+             <Completed />
+          </ProtectedRoute>
         } />
         <Route path='signin' element={<Signin />} />
         <Route path='signup' element={<Signup />} />
+        
       </Route>
     )
   )

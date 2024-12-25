@@ -21,7 +21,7 @@ const TaskForm = ({isActive,SetisActive}) => {
   useEffect(() => {
     if (isActive) {
       gsap.from(formRef.current, {
-        y: "100vh", 
+        y: "10vh", 
         opacity: 0,
         duration: 0.8,
         ease: "power4.out",
@@ -37,7 +37,7 @@ const TaskForm = ({isActive,SetisActive}) => {
   };
   const handleClose = () => {
     gsap.to(formRef.current,{
-      y:"100vh",
+      y:"10vh",
       opacity:0,
       duration:0.8,
       ease: "power4.out",

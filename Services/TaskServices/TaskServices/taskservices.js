@@ -2,11 +2,20 @@ const Tasks = require("../Model/Tasks");
 
 
 
-exports.createTask = async ({ userId, task_name, task_priority }) => {
+exports.createTask = async ({ user_id, task_name, task_priority, task_status, task_type, due_date, due_time}) => {
   try {
-    const newTask = new Tasks({ userId, task_name, task_priority });
+    console.log(user_id)
+    const newTask = new Tasks({
+         user_id, 
+         task_name,
+         task_priority,
+         task_status,
+         task_type,
+         due_date,
+         due_time
+        });
     console.log("Task saved succesfully",newTask);
-    await newTask.save();
+    return await newTask.save();
   } catch (error) {
     console.log(error);
     throw error

@@ -4,11 +4,8 @@ const express = require("express");
 const router = express.Router();
 
 router.post("/task", async (req, res) => {
-  const user_id = req.body.user_id;
-  const task_name = req.body.task_name;
-  const task_priority = req.body.task_priority;
-  const task_status = req.body.task_status;
-
+  const { user_id, task_name, task_priority, task_status, task_type, due_date, due_time } = req.body;
+  console.log("user_id",user_id)
   try {
     if (user_id) {
       const newTask = await TaskServices.createTask({
@@ -16,6 +13,9 @@ router.post("/task", async (req, res) => {
         task_name,
         task_priority,
         task_status,
+        task_type,
+        due_date,
+        due_time
       });
       if (newTask) {
         res.status(201).json({ message: "Task created succesfully" });
