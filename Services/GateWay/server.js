@@ -5,6 +5,7 @@ const session = require('express-session');
 const cors = require('cors')
 const app = express()
 const userRoutes =require('./Routes/UserRoutes')
+const TaskRoutes = require('./Routes/TaskRoutes')
 
 app.use(cors({
   origin: 'http://localhost:5173',
@@ -24,8 +25,8 @@ app.use(
 app.use(express.json());
 app.use(require("./Middleware/loggingMiddleware")); // Log all requests
 app.use("/users", userRoutes);
-// app.use("/tasks", taskRoutes);
-// app.use("/notifications", notificationRoutes);
+app.use("/tasks",TaskRoutes)
+
 
 
 const PORT = process.env.PORT || 4000;

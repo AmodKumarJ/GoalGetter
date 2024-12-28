@@ -17,6 +17,10 @@ router.post('/signup',async (req,res) => {
         if (userExits) {
             return res.status(400).json({message:'User Already Exits'})
         }
+        const emailExits = await authServices.findUserByEmail(email);
+        if (emailExits) {
+            return res.status(400).json({message:'Email Already Exits'})
+        }
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(pass, salt);
         const new_user = await authServices.createUser({username,password,email}) 

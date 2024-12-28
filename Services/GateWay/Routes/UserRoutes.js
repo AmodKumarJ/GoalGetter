@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require("axios");
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
-
+const secret_key = process.env.SECRET_KEY || "27PuW#mK9$vL4nX8@jF5hQ2&sR7bN3cA" ;
 // Forward requests to user-service
 router.post("/login", async (req, res) => {
   try {

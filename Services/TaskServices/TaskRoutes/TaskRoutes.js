@@ -30,9 +30,10 @@ router.post("/task", async (req, res) => {
 });
 router.get("/tasks/:uid", async (req, res) => {
   const { uid } = req.params;
-
+  
   try {
     const tasks = await TaskServices.getTasksByUserId(uid);
+    console.log(tasks)
     if (tasks) {
       res.status(200).send(tasks);
     } else {
