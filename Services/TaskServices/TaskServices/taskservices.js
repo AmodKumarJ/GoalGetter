@@ -1,5 +1,7 @@
 const Tasks = require("../Model/Tasks");
 
+const { ObjectId } = require('mongodb');
+
 exports.createTask = async ({
   user_id,
   task_name,
@@ -54,8 +56,8 @@ exports.deleteTaskById = async (task_id) => {
 exports.updateTaskStatus = async (task_id, status) => {
   try {
     const updatedTask = await Tasks.updateOne(
-      { task_id: task_id },
-      { $set: { status: status } }
+      { _id: new ObjectId(task_id) },
+      { $set: { task_status: status } }
     );
 
     if (!updatedTask) {
@@ -73,16 +75,16 @@ exports.updateTaskStatus = async (task_id, status) => {
 exports.updateTask = async (task_id, task) => {
   try {
     const updatedTask = await Tasks.findOneAndUpdate(
-      { _id: new new ObjectId(task_id)() },
+      { _id: new ObjectId(task_id)},
       { $set: task },
       { new: true, runValidators: true }
     );
     if (!updatedTask) {
-      return res.status(404).json({ message: "Task not found" });
+      console.log("task not found")
     }
-    res.status(200).json(updatedTask);
+    return updatedTask;
   } catch (error) {
     console.error("Error updating task:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+   
   }
 };

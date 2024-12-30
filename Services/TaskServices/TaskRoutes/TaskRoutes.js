@@ -74,5 +74,19 @@ router.post("/status/:id", async (req, res) => {
     res.status(500).json({ error: "Failed to update status" });
   }
 });
+router.put("/task/update/:id",async(req,res)=>{
+  try {
+    const {id} = req.params;
+  const task = req.body;
+  const updated = await TaskServices.updateTask(id,task);
+  if (!updated) {
+    res.status(400).json({message:"Somthing went wrong with update(bad Request)"})
+  }
+  res.status(200).json({message:"updated successfully"})
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({message:"Server Error"})
+  }
+})
 
 module.exports = router

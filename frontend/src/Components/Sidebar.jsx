@@ -12,7 +12,7 @@ import { logout } from "../Redux/authSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router";
-import Home from './Home'
+
 
 const Sidebar = () => {
   const dispatch = useDispatch();

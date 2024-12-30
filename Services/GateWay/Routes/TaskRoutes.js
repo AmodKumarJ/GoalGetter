@@ -41,12 +41,23 @@ router.delete("/task/:t_id",authenticateToken, async (req, res) => {
 router.post("/task_status/:id",authenticateToken, async (req, res) => {
   try {
     const {id} = req.params;
-    const response = await axios.post(`${process.env.TASK_SERVICE_URL}/api/status/${id}`);
+    const response = await axios.post(`${process.env.TASK_SERVICE_URL}/api/status/${id}`,req.body);
     res.status(response.status).json({"message":response.message});
   } catch (error) {
     console.log(error)
     res.status(error.response?.status || 500).send(error.response?.data || "Internal Server Error");
   }
 });
+
+router.put("/task_update/:id",authenticateToken, async (req,res) => {
+  try {
+    const {id} = req.params;
+    const response = await axios.put(`${process.env.TASK_SERVICE_URL}/api/task/update/${id}`,req.body);
+    res.status(response.status).json({"message":response.data.message});
+  } catch (error) {
+    console.log(error)
+    res.status(error.response?.status || 500).send(error.response?.data || "Internal Server Error");
+  }
+})
 
 module.exports = router
