@@ -6,8 +6,9 @@ import TaskForm from "./Assets/TaskForm";
 import SkeletonLoader from "./SkeletonLoader";
 const Home = () => {
   const [isActive, setIsActive] = useState(false);
-
+  const [contentLoading ,setContentLoading] = useState(true)
   const [loading, setLoading] = useState(true);
+  const [submit,setSubmit] = useState(true);
 
   useEffect(()=>{
     setTimeout(()=>{
@@ -31,7 +32,7 @@ const Home = () => {
             <MotivationalCarousel />
           </div>
           <div>
-            <TaskList />
+            <TaskList setContentLoading={setContentLoading} contentLoading={contentLoading} setSubmit={setSubmit} submit={submit}/>
           </div>
           <div className="w-full  text-white flex justify-center">
             <button
@@ -41,7 +42,7 @@ const Home = () => {
               <FcPlus /> Create New Task
             </button>
           </div>
-          <TaskForm isActive={isActive} SetisActive={setIsActive} />
+          <TaskForm isActive={isActive} SetisActive={setIsActive} setSubmit={setSubmit}  />
         </div>
       )}
     </>

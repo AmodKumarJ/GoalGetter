@@ -5,8 +5,8 @@ const { ObjectId } = require('mongodb');
 exports.createTask = async ({
   user_id,
   task_name,
+  task_description,
   task_priority,
-  task_status,
   task_type,
   due_date,
   due_time,
@@ -16,8 +16,8 @@ exports.createTask = async ({
     const newTask = new Tasks({
       user_id,
       task_name,
+      task_description,
       task_priority,
-      task_status,
       task_type,
       due_date,
       due_time,

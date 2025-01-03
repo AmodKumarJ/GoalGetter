@@ -5,6 +5,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 const TaskSchema = new mongoose.Schema({
   user_id: { type: String, required: true }, 
   task_name: { type: String, required: true},
+  task_description: { type: String, required: true},
   task_priority: { type: String, required: true },
   task_status: { type: String, required: true, default: "pending" },
   task_type: { type: String, required: true },
@@ -22,6 +23,6 @@ const TaskSchema = new mongoose.Schema({
 TaskSchema.plugin(AutoIncrement, { inc_field: 'task_id' });
 
 
-const TaskModel = mongoose.model("taskModel", TaskSchema);
+const TaskModel = mongoose.model("taskModel", TaskSchema); 
 
 module.exports = TaskModel;

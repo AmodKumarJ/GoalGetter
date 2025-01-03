@@ -4,13 +4,14 @@ const express = require("express");
 const router = express.Router();
 
 router.post("/task", async (req, res) => {
-  const { user_id, task_name, task_priority, task_status, task_type, due_date, due_time } = req.body;
+  const { user_id, task_name,task_description, task_priority, task_status, task_type, due_date, due_time } = req.body;
   console.log("user_id",user_id)
   try {
     if (user_id) {
       const newTask = await TaskServices.createTask({
         user_id,
         task_name,
+        task_description,
         task_priority,
         task_status,
         task_type,
@@ -18,7 +19,11 @@ router.post("/task", async (req, res) => {
         due_time
       });
       if (newTask) {
-        res.status(201).json({ message: "Task created succesfully" });
+        console.log("response from new task created ",newTask)
+        res.status(201).json({
+          message: 'Task created successfully',
+          data: newTask,
+        });
       } else {
         res.status(402).json({ message: "user_id not found" });
       }

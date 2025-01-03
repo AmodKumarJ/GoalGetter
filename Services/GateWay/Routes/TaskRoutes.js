@@ -8,7 +8,8 @@ router.post("/create-task",authenticateToken, async (req, res) => {
   try {
     console.log(process.env.TASK_SERVICE_URL)
     const response = await axios.post(`${process.env.TASK_SERVICE_URL}/api/task`, req.body);
-    res.status(response.status).json({"message":response.message});
+
+    res.status(response.status).json({"message":response.message,data:response.data});
   } catch (error) {
     console.log(error)
     res.status(error.response?.status || 500).send(error.response?.data || "Internal Server Error");
